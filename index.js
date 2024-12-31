@@ -4,6 +4,8 @@ const cors = require('cors')
 const app = express();
 const productRoutes = require('./routes/product.routes.js')
 const product = require('./models/product.model.js');
+const userRoutes = require('./routes/userRoutes')
+require('dotenv').config();
 const port = 5000;
 
 // Middleware
@@ -14,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 connectDB();
 
 app.use('/api/products', productRoutes)
+app.use('/api/users', userRoutes);
 app.use(cors())
 
 // Root Endpoint
