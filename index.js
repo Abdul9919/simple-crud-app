@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./database/db');
+const cors = require('cors')
 const app = express();
 const productRoutes = require('./routes/product.routes.js')
 const product = require('./models/product.model.js');
@@ -13,6 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 connectDB();
 
 app.use('/api/products', productRoutes)
+app.use(cors())
 
 // Root Endpoint
 app.get('/', (req, res) => {
